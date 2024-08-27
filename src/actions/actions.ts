@@ -30,7 +30,7 @@ export async function getUser() {
     email: session?.user?.email,
   }).exec();
 
-  console.log(user._id);
+  console.log(user?._id);
 
-  return user.name;
+  return user?.name;
 }
