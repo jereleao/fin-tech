@@ -1,5 +1,3 @@
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
-import { Button } from './ui/button';
 import { auth } from '@/lib/auth';
 import {
   DropdownMenu,
@@ -7,8 +5,10 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from './ui/dropdown-menu';
-import { SignIn, SignOut } from './auth-components';
+} from '@/components/ui/dropdown-menu';
+import { Button } from '@/components/ui/button';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { SignIn, SignOut } from '@/components/auth-components';
 
 export default async function UserButton() {
   const session = await auth();

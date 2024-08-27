@@ -1,14 +1,11 @@
-import CustomLink from './custom-link';
 import packageJSON from '@/package.json';
+import { MainNav } from '@/components/main-nav';
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col gap-3 px-3 my-3 mx-0 w-full text-sm sm:flex-row sm:justify-between sm:items-center sm:px-4 sm:my-8 sm:mx-auto sm:max-w-3xl sm:h-5">
-      <div className="flex flex-col gap-4 sm:flex-row">
-        {/* Footer content */}
-      </div>
-      <div className="flex gap-2 justify-start items-center">
-        {`version ${packageJSON.version}`}
+    <footer className="sticky botton-0 flex justify-center border-t">
+      <div className="w-full h-16 max-w-3xl px-4 sm:px-6">
+        <MainNav />
       </div>
     </footer>
   );

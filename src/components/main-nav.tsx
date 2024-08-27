@@ -1,38 +1,26 @@
 'use client';
 
+import React from 'react';
 import { cn } from '@/lib/utils';
-import CustomLink from './custom-link';
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
+  NavigationMenuContent,
   navigationMenuTriggerStyle,
-} from './ui/navigation-menu';
-import React from 'react';
-import { Button } from './ui/button';
+} from '@/components/ui/navigation-menu';
+import { PlusIcon, ReaderIcon } from '@radix-ui/react-icons';
 
 export function MainNav() {
   return (
-    <div className="flex gap-4 items-center">
-      <CustomLink href="/">
-        <Button variant="ghost" className="p-0">
-          {/* <Image
-            src="/logo.png"
-            alt="Home"
-            width="32"
-            height="32"
-            className="min-w-8"
-          /> */}
-        </Button>
-      </CustomLink>
+    <div className="min-h-16 flex gap-4 items-center">
       <NavigationMenu>
-        <NavigationMenuList>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger className="px-2">
-              Server Side
+        <NavigationMenuList className="w-screen flex justify-center">
+          {/* <NavigationMenuItem>
+            <NavigationMenuTrigger className="p-2">
+              <ReaderIcon className="h-7 w-7" />
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
@@ -44,7 +32,24 @@ export function MainNav() {
                 </ListItem>
               </ul>
             </NavigationMenuContent>
+          </NavigationMenuItem> */}
+          <NavigationMenuItem>
+            <NavigationMenuLink
+              href="/operations"
+              className={navigationMenuTriggerStyle()}
+            >
+              <ReaderIcon className="h-7 w-7" />
+            </NavigationMenuLink>
           </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink
+              href="/operations/new"
+              className={navigationMenuTriggerStyle()}
+            >
+              <PlusIcon className="h-7 w-7" />
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          {/* 
           <NavigationMenuItem>
             <NavigationMenuLink
               href="/client-example"
@@ -53,6 +58,7 @@ export function MainNav() {
               Client Side
             </NavigationMenuLink>
           </NavigationMenuItem>
+          */}
         </NavigationMenuList>
       </NavigationMenu>
     </div>

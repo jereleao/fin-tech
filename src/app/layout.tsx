@@ -4,6 +4,7 @@ import { Inter as FontSans } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -24,15 +25,15 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          'min-h-screen bg-background font-sans antialiased',
+          'h-screen bg-background font-sans antialiased',
           fontSans.variable
         )}
       >
         <div className="flex flex-col justify-between w-full h-full min-h-screen">
           <Header />
-          <main className="flex-auto w-full max-w-3xl px-4 py-4 mx-auto sm:px-6 md:py-6">
-            {children}
-          </main>
+          <ScrollArea className="flex-auto w-full max-w-3xl px-4 py-4 sm:px-6 md:py-6">
+            <main>{children}</main>
+          </ScrollArea>
           <Footer />
         </div>
       </body>
