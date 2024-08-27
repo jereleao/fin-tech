@@ -1,4 +1,4 @@
-import { testDatabaseConnection } from '../actions/actions';
+import { testDatabaseConnection } from '@/actions/actions';
 
 export default async function Page() {
   const isConnected = await testDatabaseConnection();
