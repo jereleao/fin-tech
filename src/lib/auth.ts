@@ -1,23 +1,14 @@
-import NextAuth, { NextAuthConfig } from 'next-auth';
-import 'next-auth/jwt';
+import NextAuth from 'next-auth';
+import authConfig from '@/lib/auth.config';
 
-import GitHub from 'next-auth/providers/github';
-import Google from 'next-auth/providers/google';
+import { MongoDBAdapter } from '@auth/mongodb-adapter';
+import mongoClient from '@/lib/mongodb';
 
-const config = {
-  providers: [GitHub, Google],
-  basePath: '/auth',
-  callbacks: {
-    authorized({ request, auth }) {
-      const { pathname } = request.nextUrl;
-      if (pathname === '/middleware-example') return !!auth;
-      return true;
-    },
-  },
-  experimental: {
-    enableWebAuthn: true,
-  },
-  debug: process.env.NODE_ENV !== 'production' ? true : false,
-} satisfies NextAuthConfig;
-
-export const { handlers, auth, signIn, signOut } = NextAuth(config);
+export const { handlers, auth, signIn, signOut } = NextAuth({
+  adapter: MongoDBAdapter(mongoClient, {
+    databaseName: 'fin-tech',
+    collections: { Accounts: 'user-accounts' },
+  }),
+  session: { strategy: 'jwt' },
+  ...authConfig,
+});

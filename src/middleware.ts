@@ -1,4 +1,9 @@
-export { auth as middleware } from '@/lib/auth';
+import NextAuth from 'next-auth';
+import authConfig from '@/lib/auth.config';
+
+const { auth } = NextAuth(authConfig);
+
+export { auth as middleware };
 
 // Or like this if you need to do something here.
 // export default auth((req) => {
